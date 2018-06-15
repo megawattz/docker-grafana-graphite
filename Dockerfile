@@ -102,7 +102,7 @@ ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # ---------------- #
 
 # Grafana
-EXPOSE  80
+EXPOSE  8080
 
 # StatsD UDP port
 EXPOSE  8125/udp
@@ -111,11 +111,12 @@ EXPOSE  8125/udp
 EXPOSE  8126
 
 # Graphite web port
-EXPOSE 81
+EXPOSE 8081
 
 # Graphite Carbon port
 EXPOSE 2003
 
+RUN mkdir -p data/whisper data/elasticsearch data/grafana log/graphite log/graphite/webapp log/elasticsearch
 
 # -------- #
 #   Run!   #

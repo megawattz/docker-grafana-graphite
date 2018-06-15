@@ -5,20 +5,11 @@ CONTAINER = kamon-grafana-dashboard
 
 .PHONY: up
 
-prep :
-	mkdir -p \
-		data/whisper \
-		data/elasticsearch \
-		data/grafana \
-		log/graphite \
-		log/graphite/webapp \
-		log/elasticsearch
-
 pull :
-	docker-compose pull
+	PORT=8080 docker-compose pull
 
-up : prep pull
-	docker-compose up -d
+up : pull
+	PORT=8080 docker-compose up -d
 
 down :
 	docker-compose down
